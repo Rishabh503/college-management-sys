@@ -9,6 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -39,4 +40,10 @@ public class SubjectEntity {
     @JoinColumn(name="professor_subject_id",referencedColumnName = "id")
     @JsonIgnore
     private ProfessorEntity professor_of_this_subject;
+
+    @ManyToMany(mappedBy = "subjects")
+//    @JsonIgnore
+    private Set<StudentEntity> students;
 }
+
+

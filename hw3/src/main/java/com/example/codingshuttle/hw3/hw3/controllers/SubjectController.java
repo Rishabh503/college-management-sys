@@ -26,5 +26,8 @@ public class SubjectController {
     public SubjectEntity getSubjectById(@PathVariable Long subjectId){
         return subjectService.getSubjectById(subjectId);
     }
-
+    @PutMapping(path = "{subjectId}/subjectToStudent/{studentId}")
+    public SubjectEntity connectStudentSubject(@PathVariable Long subjectId,@PathVariable Long studentId){
+        return subjectService.connectStudentSubject(subjectId,studentId);
+    }
 }

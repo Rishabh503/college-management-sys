@@ -4,6 +4,7 @@ import com.example.codingshuttle.hw3.hw3.entity.ProfessorEntity;
 import com.example.codingshuttle.hw3.hw3.entity.StudentEntity;
 import com.example.codingshuttle.hw3.hw3.entity.SubjectEntity;
 import com.example.codingshuttle.hw3.hw3.repository.ProfessorRepository;
+import com.example.codingshuttle.hw3.hw3.repository.StudentRepository;
 import com.example.codingshuttle.hw3.hw3.repository.SubjectRepository;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,12 @@ import java.util.Optional;
 public class SubjectService {
 
    private final SubjectRepository subjectRepository;
-    private final ProfessorRepository professorRepository;
+    private final StudentRepository studentRepository;
 
-    public SubjectService(SubjectRepository subjectRepository, ProfessorRepository professorRepository) {
+
+    public SubjectService(SubjectRepository subjectRepository, StudentRepository studentRepository) {
         this.subjectRepository = subjectRepository;
-        this.professorRepository = professorRepository;
+        this.studentRepository = studentRepository;
     }
 
     public SubjectEntity createNewSubject(SubjectEntity subjectEntity) {
@@ -29,4 +31,16 @@ public class SubjectService {
     }
 
 
+    public SubjectEntity connectStudentSubject(Long subjectId, Long studentId) {
+        SubjectEntity subject=subjectRepository.findById(subjectId).orElse(null);
+        StudentEntity student=studentRepository.findById(studentId).orElse(null);
+
+        if(student!=null && subject!=null){
+            subject.getStudents().add(student);
+            student.getSubjects().add(subject);
+            studentRepository.save(student);
+            return subjectRepository.save(subject);
+        }
+        return null;
+    }
 }
