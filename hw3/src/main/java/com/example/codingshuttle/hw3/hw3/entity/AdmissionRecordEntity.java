@@ -1,5 +1,7 @@
 package com.example.codingshuttle.hw3.hw3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,7 +36,8 @@ public class AdmissionRecordEntity {
     @Column(nullable = false)
     private Integer fees;
 
-
-//    private StudentEntity student;
+    @OneToOne(mappedBy = "feesSlip")
+    @JsonIgnore
+    private StudentEntity student;
 
 }

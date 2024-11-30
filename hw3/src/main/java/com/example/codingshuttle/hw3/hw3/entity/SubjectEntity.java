@@ -1,5 +1,6 @@
 package com.example.codingshuttle.hw3.hw3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,8 +35,8 @@ public class SubjectEntity {
     @Column(nullable = false)
     private String subtitle;
 
-    //
-//    private ProfessorEntity professor;
-//
-//    private List<StudentEntity> students;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="professor_subject_id",referencedColumnName = "id")
+    @JsonIgnore
+    private ProfessorEntity professor_of_this_subject;
 }

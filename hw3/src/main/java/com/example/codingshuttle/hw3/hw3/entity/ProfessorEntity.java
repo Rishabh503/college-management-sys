@@ -1,5 +1,6 @@
 package com.example.codingshuttle.hw3.hw3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -34,11 +36,11 @@ public class ProfessorEntity {
     public int hashCode() {
         return Objects.hash(getId(), getTitle());
     }
+    @OneToMany(mappedBy = "professor_of_this_subject",fetch = FetchType.EAGER)
+    private Set<SubjectEntity> subjectsbyproffesor;
 
-    //    private List<SubjectEntity> subjects;
-//
-//    private List<StudentEntity> students;
-
-
-
+    @ManyToMany
+    @JoinTable(name="students_by_proff",joinColumns = @JoinColumn(name="professor_id"),
+                            inverseJoinColumns = @JoinColumn(name="student_id"))
+    private Set<StudentEntity> StudentsTaughtByProffesor;
 }

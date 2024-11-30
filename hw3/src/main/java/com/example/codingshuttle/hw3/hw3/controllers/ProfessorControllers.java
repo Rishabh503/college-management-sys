@@ -23,6 +23,10 @@ public class ProfessorControllers {
     public ProfessorEntity createNewProfessor(@RequestBody ProfessorEntity professorEntity){
         return professorService.createNewProfessor(professorEntity);
     }
+    @PutMapping(path="/{professorId}/proffesor/{subjectId}")
+    public ProfessorEntity assingSubjectToProfesor(@PathVariable Long professorId,@PathVariable Long subjectId ){
+        return professorService.assingSubjectToProfesor(professorId,subjectId);
+    }
 
 
 

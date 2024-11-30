@@ -1,5 +1,6 @@
 package com.example.codingshuttle.hw3.hw3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import static org.apache.tomcat.util.net.openssl.OpenSSLStatus.getName;
 
@@ -36,8 +38,12 @@ public class StudentEntity {
     public int hashCode() {
         return Objects.hash(getId(), getStudentname());
     }
+    @OneToOne
+    @JoinColumn(name="student_fees_record",referencedColumnName = "id")
+    private AdmissionRecordEntity feesSlip;
 
-    //    private List<ProfessorEntity> professors;
-//
-//    private List<SubjectEntity> subjects;
+    @ManyToMany(mappedBy = "StudentsTaughtByProffesor")
+    @JsonIgnore
+    private Set<ProfessorEntity> ProfessorTeachingStudent;
+
 }

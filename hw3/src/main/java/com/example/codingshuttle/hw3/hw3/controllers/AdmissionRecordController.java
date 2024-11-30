@@ -6,7 +6,7 @@ import com.example.codingshuttle.hw3.hw3.service.AdmissionRecordService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path="admissionrecords")
+@RequestMapping(path="/admissionrecords")
 public class AdmissionRecordController {
 
     private final AdmissionRecordService admissionRecordService;
@@ -23,6 +23,9 @@ public class AdmissionRecordController {
     public AdmissionRecordEntity getstudentfees(@PathVariable Long feesId){
         return admissionRecordService.getstudentfees(feesId);
     }
-
+    @PutMapping(path="/{studentId}/fees/{feesId}")
+    public AdmissionRecordEntity alotfees(@PathVariable Long studentId,@PathVariable Long feesId){
+        return admissionRecordService.alotfees(studentId,feesId);
+    }
 
 }

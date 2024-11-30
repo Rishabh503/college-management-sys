@@ -1,7 +1,11 @@
 package com.example.codingshuttle.hw3.hw3.controllers;
 
+import com.example.codingshuttle.hw3.hw3.entity.ProfessorEntity;
 import com.example.codingshuttle.hw3.hw3.entity.SubjectEntity;
 import com.example.codingshuttle.hw3.hw3.service.SubjectService;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,4 +26,5 @@ public class SubjectController {
     public SubjectEntity getSubjectById(@PathVariable Long subjectId){
         return subjectService.getSubjectById(subjectId);
     }
+
 }
