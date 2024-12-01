@@ -19,7 +19,7 @@ import static org.apache.tomcat.util.net.openssl.OpenSSLStatus.getName;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="student")
-public class StudentEntity {
+public class StudentEntity extends AuditableEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

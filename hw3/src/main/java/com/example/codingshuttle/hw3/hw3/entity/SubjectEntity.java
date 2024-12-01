@@ -17,7 +17,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="subjects")
-public class SubjectEntity {
+public class SubjectEntity extends AuditableEntity {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof SubjectEntity that)) return false;

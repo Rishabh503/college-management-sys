@@ -16,7 +16,7 @@ import java.util.Objects;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AdmissionRecordEntity {
+public class AdmissionRecordEntity extends AuditableEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

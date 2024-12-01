@@ -17,11 +17,12 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="professor")
-public class ProfessorEntity {
+public class ProfessorEntity extends AuditableEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
 
 //    @Column(nullable = false)
     private String title;
