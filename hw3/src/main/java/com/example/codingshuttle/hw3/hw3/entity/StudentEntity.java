@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.envers.Audited;
 
 import java.util.List;
 import java.util.Objects;
@@ -19,6 +20,7 @@ import static org.apache.tomcat.util.net.openssl.OpenSSLStatus.getName;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="student")
+@Audited
 public class StudentEntity extends AuditableEntity{
 
     @Id
